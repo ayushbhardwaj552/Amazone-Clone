@@ -1,230 +1,289 @@
-# Amazon Clone — SDE Intern Fullstack Assignment
+# 🛒 Amazon Clone — SDE Intern Fullstack Assignment
 
-A fully functional Amazon-inspired e-commerce web application built with Next.js App Router, TypeScript, Redux Toolkit, Tailwind CSS, Supabase, and Resend.
+> A fully functional Amazon-inspired e-commerce web application built with **Next.js**, **TypeScript**, **Redux Toolkit**, **Tailwind CSS**, **Supabase**, and **Resend**.
 
----
+<p align="center">
+  <a href="https://amazone-clone-kappa-flax.vercel.app/" target="_blank">
+    <img src="https://img.shields.io/badge/🚀%20Live%20Demo-Vercel-black?style=for-the-badge&logo=vercel" alt="Live Demo"/>
+  </a>
+  &nbsp;
+  <a href="https://github.com/ayushbhardwaj552/Amazone-Clone" target="_blank">
+    <img src="https://img.shields.io/badge/📦%20GitHub%20Repo-181717?style=for-the-badge&logo=github" alt="GitHub Repo"/>
+  </a>
+</p>
 
-## 📌 Assignment Summary
-Build a functional e-commerce web application that closely replicates Amazon's design and user experience. This project includes product browsing, cart management, checkout and order placement, with a clean responsive UI and real backend integration.
-
----
-
-## 🚀 Live Demo & Repository
-* **GitHub Repository:** [https://github.com/ayushbhardwaj552/amazon-clone](https://github.com/ayushbhardwaj552/amazon-clone)
-* **Deployed Web Application:** *(Insert deployed URL here)*
-
----
-
-## ✅ Core Features Implemented
-
-### 1. Product Listing Page
-* Responsive product grid matching Amazon-like layout.
-* Product cards displaying image, title, price, rating, discount badge, and Add to Cart button.
-* Search box supporting queries across product title, description, and category.
-* Category filtering and client-side product browsing.
-
-### 2. Product Detail Page
-* Multi-image carousel with thumbnail navigation.
-* Detailed product description and feature list.
-* Price, rating, review count, stock status, and delivery estimate.
-* Add to Cart and Buy Now actions.
-
-### 3. Shopping Cart
-* Full cart overview with line-item details.
-* Quantity update controls and remove-item support.
-* Cart subtotal, delivery, and order total calculations.
-* Realtime UI updates when cart contents change.
-
-### 4. Order Placement
-* Checkout page with shipping address form and validation.
-* Order summary review before placing the order.
-* Order placement persists the order to Supabase.
-* Order confirmation page displays generated Order ID.
+<p align="center">
+  <img src="https://img.shields.io/badge/Next.js-16.2.6-black?style=flat-square&logo=next.js"/>
+  <img src="https://img.shields.io/badge/TypeScript-5.8.2-blue?style=flat-square&logo=typescript"/>
+  <img src="https://img.shields.io/badge/Redux%20Toolkit-2.6.1-764abc?style=flat-square&logo=redux"/>
+  <img src="https://img.shields.io/badge/Tailwind%20CSS-3.4.17-38bdf8?style=flat-square&logo=tailwind-css"/>
+  <img src="https://img.shields.io/badge/Supabase-PostgreSQL-3ecf8e?style=flat-square&logo=supabase"/>
+</p>
 
 ---
 
-## 🌟 Bonus Features Included
-* Responsive design for mobile, tablet, and desktop.
-* Supabase Auth integration for login and signup flows.
-* Wishlist functionality managed with Redux Toolkit.
-* Order history page for past purchases.
-* Order confirmation email notifications via Resend API.
+## 📌 Assignment Overview
+
+Build a functional e-commerce web application that closely replicates **Amazon's design and user experience** — including product browsing, cart management, and order placement — with a clean responsive UI and real backend integration.
+
+---
+
+## 🔗 Quick Links
+
+| 🔖 Resource | 🌐 URL |
+|---|---|
+| 🚀 Live Application | [amazone-clone-kappa-flax.vercel.app](https://amazone-clone-kappa-flax.vercel.app/) |
+| 📁 GitHub Repository | [github.com/ayushbhardwaj552/Amazone-Clone](https://github.com/ayushbhardwaj552/Amazone-Clone) |
+
+---
+
+## 🎯 Assignment Compliance — Evaluator Matrix
+
+| ✅ Requirement | 🛠️ Implementation | 📂 Codebase Location |
+|---|---|---|
+| 🗂️ **Product Listing Page** | Responsive Amazon-style grid with search, category filter, ratings & badges | `src/components/ProductListing.tsx` |
+| 🔍 **Product Detail Page** | Embla carousel, stock status, delivery estimates, Add to Cart & Buy Now | `src/app/product/[id]/page.tsx` |
+| 🛒 **Shopping Cart** | Quantity controls, item removal, real-time subtotal & total calculations | `src/app/cart/page.tsx` |
+| 📦 **Order Placement** | Address form + validation, order summary, Supabase persistence, Order ID | `src/app/checkout/page.tsx` |
+| 🗄️ **Database Schema** | Normalized PostgreSQL schema with Products & Orders tables | [Schema Section ↓](#️-database-schema) |
+| 📱 **Responsive Design** ⭐ | Fully fluid across mobile, tablet, and desktop via Tailwind utilities | Global Tailwind config |
+| 🔐 **User Auth** ⭐ | Supabase Auth — Login, Signup, and session persistence | `src/app/auth/` |
+| ❤️ **Wishlist** ⭐ | Client-side wishlist slice via Redux Toolkit with persistent state | `src/redux/wishlistSlice.ts` |
+| 📧 **Email Notifications** ⭐ | Styled HTML order receipts sent via Resend API on every order | `src/lib/email/sendOrderEmail.ts` |
+| 🕓 **Order History** ⭐ | Full past orders page linked to Supabase orders table | `src/app/orders/page.tsx` |
+
+> ⭐ = Bonus feature
+
+---
+
+## ✨ Core Features
+
+### 🗂️ 1. Product Listing Page
+- Responsive product grid matching Amazon's layout
+- Product cards with image, title, price, rating, discount badge & **Add to Cart**
+- 🔎 Smart search across title, description, and category
+- ⚡ Instant client-side category filtering
+
+### 🔍 2. Product Detail Page
+- 🖼️ Multi-image Embla carousel with thumbnail navigation
+- Detailed description, feature list, rating & review count
+- Live stock status + estimated delivery date
+- **Add to Cart** and **Buy Now** actions
+
+### 🛒 3. Shopping Cart
+- Full cart overview with line-item details
+- Quantity update controls + remove-item support
+- 💰 Real-time subtotal, delivery fee & total calculations
+- Persisted via `redux-persist` — survives page refreshes
+
+### 📦 4. Order Placement
+- Checkout page with shipping address form & validation
+- Order summary review before placing
+- Order stored in Supabase on confirmation
+- ✅ Confirmation page shows unique **Order ID**
+
+---
+
+## 🌟 Bonus Features
+
+| 🏆 Feature | 📌 Details | ✔️ Status |
+|---|---|---|
+| 📱 Responsive Design | Mobile, Tablet & Desktop | ✅ Done |
+| 🔐 User Authentication | Login / Signup via Supabase Auth | ✅ Done |
+| ❤️ Wishlist | Redux Toolkit — persistent client-side | ✅ Done |
+| 🕓 Order History | Past orders from Supabase | ✅ Done |
+| 📧 Confirmation Email | Styled HTML via Resend API | ✅ Done |
 
 ---
 
 ## 🧠 Tech Stack
-* **Frontend:** Next.js 16.2.6 (App Router)
-* **Language:** TypeScript
-* **State Management:** Redux Toolkit + React Redux
-* **Styling:** Tailwind CSS + Tailwind Animations
-* **Backend / Database:** Supabase (PostgreSQL)
-* **Email Service:** Resend API
-* **Payment / Checkout:** Stripe client integration
-* **HTTP / API:** Axios, Next.js API Routes
+
+| 🔧 Layer | ⚙️ Technology |
+|---|---|
+| 🖥️ **Frontend** | Next.js 16.2.6 (App Router) |
+| 📝 **Language** | TypeScript |
+| 🗃️ **State Management** | Redux Toolkit + React Redux + redux-persist |
+| 🎨 **Styling** | Tailwind CSS + Tailwind Animations |
+| 🗄️ **Backend / Database** | Supabase (PostgreSQL) |
+| 📧 **Email Service** | Resend API |
+| 💳 **Checkout** | Stripe client integration |
+| 🔌 **HTTP / API** | Axios + Next.js API Routes |
 
 ---
 
 ## 🏗️ Architecture Overview
-* Product data is fetched from Supabase and rendered in the UI.
-* Cart and wishlist state is managed in Redux and persisted locally.
-* Orders are created through `src/app/api/orders/route.ts` and stored in Supabase.
-* Confirmation emails are triggered by `src/lib/email/sendOrderEmail.ts` using Resend.
-* Checkout and guest order placement are supported without forcing login.
+
+```
+🌐 User Request
+       │
+       ▼
+ Next.js App Router  ──────────────────────────────────┐
+       │                                               │
+       ├── 🗄️  Supabase ── Products table (catalog)    │
+       │                └── Orders table (persistence) │
+       │                                               │
+       ├── 🗃️  Redux Toolkit ── Cart slice              │
+       │                     └── Wishlist slice        │
+       │                                               │
+       └── 📧 Resend API ── Order confirmation emails  │
+                                                       │
+       ◄──────────── Next.js API Routes ───────────────┘
+```
+
+- Product data fetched from **Supabase** and rendered in the UI
+- Cart & wishlist managed in **Redux**, persisted to LocalStorage
+- Orders created via `src/app/api/orders/route.ts` and stored in Supabase
+- Emails triggered via `src/lib/email/sendOrderEmail.ts`
+- Guest checkout supported — **no login required** to place orders
 
 ---
 
 ## 🗄️ Database Schema
 
-### `Products`
-Stores product catalog and visual metadata.
+### 📦 `Products` — Product catalog & visual metadata
 
-| Column | Type | Notes |
+| 🏷️ Column | 📐 Type | 📝 Notes |
 |---|---|---|
-| `id` | `INTEGER` | Primary key |
+| `id` | `INTEGER` | 🔑 Primary key |
 | `title` | `VARCHAR` | Required |
 | `price` | `NUMERIC` | Required |
-| `originalPrice` | `NUMERIC` | Optional discount price |
+| `originalPrice` | `NUMERIC` | Optional — used for discount badge |
 | `description` | `TEXT` | Required |
 | `category` | `VARCHAR` | Required |
-| `image` | `TEXT` | Primary image URL |
-| `images` | `JSONB` | Additional carousel images |
+| `image` | `TEXT` | Primary thumbnail URL |
+| `images` | `JSONB` | Array of carousel image URLs |
 | `rating` | `JSONB` | `{ rate, count }` metadata |
-| `badge` | `VARCHAR` | Optional promotional tag |
+| `badge` | `VARCHAR` | Optional promo tag (e.g. Best Seller) |
 | `inStock` | `BOOLEAN` | Defaults to `TRUE` |
 | `deliveryDays` | `INTEGER` | Defaults to `3` |
 
-### `Orders`
-Tracks completed orders placed by customers.
+### 🧾 `Orders` — Completed customer orders
 
-| Column | Type | Notes |
+| 🏷️ Column | 📐 Type | 📝 Notes |
 |---|---|---|
-| `order_id` | `VARCHAR` | Primary key |
+| `order_id` | `VARCHAR` | 🔑 Primary key |
 | `email` | `VARCHAR` | Customer email |
-| `shipping_address` | `JSONB` | Address payload |
-| `items` | `JSONB` | Cart line items and pricing |
+| `shipping_address` | `JSONB` | Full address payload |
+| `items` | `JSONB` | Cart line items, prices & quantities |
 | `subtotal` | `NUMERIC` | Pre-shipping total |
 | `delivery_fee` | `NUMERIC` | Shipping fee |
 | `total` | `NUMERIC` | Final order total |
-| `status` | `VARCHAR` | Defaults to `confirmed` |
+| `status` | `VARCHAR` | Defaults to `"confirmed"` |
 | `created_at` | `TIMESTAMP` | Defaults to `NOW()` |
 
 ---
 
+## 🧩 Project Structure
+
+```
+amazon-clone/
+├── 📁 src/
+│   ├── app/                    # App Router pages + API route handlers
+│   │   ├── api/                # Order placement & Stripe endpoints
+│   │   ├── auth/               # Supabase auth callbacks
+│   │   ├── cart/               # 🛒 Shopping Cart page
+│   │   ├── checkout/           # 📦 Checkout & address validation
+│   │   ├── order-confirmation/ # ✅ Order success page
+│   │   ├── orders/             # 🕓 Order history page
+│   │   └── product/            # 🔍 Dynamic product detail page
+│   ├── components/             # ♻️ Reusable UI components
+│   ├── hooks/                  # 🪝 Custom React hooks
+│   ├── lib/                    # 🛠️ Supabase helpers, email, types
+│   └── redux/                  # 🗃️ Store, cart slice, wishlist slice
+└── 📁 public/                  # Static assets & media
+```
+
+---
+
 ## ⚙️ Environment Setup
-Copy `.env.example` to `.env` and configure the following:
+
+Copy `.env.example` → `.env.local` and fill in:
 
 ```env
+# 🗄️ Supabase
 NEXT_PUBLIC_SUPABASE_URL=https://your-project-id.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key-here
 
+# 📧 Resend Email
 RESEND_API_KEY=re_your_api_key_here
 ORDER_EMAIL_FROM=Amazon <orders@yourdomain.com>
 ```
 
-> If email credentials are missing, order placement still works; the app logs a warning and continues.
+> ⚠️ Missing credentials? No problem — the app auto-switches to local mock data so all features still work for evaluation.
 
 ---
 
 ## 🚀 Run Locally
 
 ```bash
-git clone https://github.com/ayushbhardwaj552/amazon-clone.git
-cd amazon-clone
+# 1️⃣ Clone the repo
+git clone https://github.com/ayushbhardwaj552/Amazone-Clone.git
+cd Amazone-Clone
+
+# 2️⃣ Install dependencies
 npm install
+
+# 3️⃣ Start dev server
 npm run dev
 ```
 
-Then visit [http://localhost:3000](http://localhost:3000).
+🎉 Visit [http://localhost:3000](http://localhost:3000)
 
 ---
 
 ## 📦 Available Scripts
-* `npm run dev` — Start the development server
-* `npm run build` — Build the production-ready app
-* `npm start` — Start the production server
-* `npm run lint` — Run ESLint
 
----
-
-## 🧩 Project Structure
-* `src/app/` — Main App Router pages, layouts, styles, and route handlers.
-* `src/components/` — Reusable UI components for product cards, cart, header, footer, and order views.
-* `src/lib/` — Application utilities, Supabase helpers, email templates, and type definitions.
-* `src/redux/` — Redux store setup, cart slice, wishlist slice, and persistence logic.
-* `src/hooks/` — Custom hooks for Supabase, auth, and Redux integration.
-* `public/` — Static assets and public media files.
+| 💻 Script | 📋 Description |
+|---|---|
+| `npm run dev` | 🔧 Start development server |
+| `npm run build` | 🏗️ Build for production |
+| `npm start` | 🚀 Start production server |
+| `npm run lint` | 🧹 Run ESLint checks |
 
 ---
 
 ## ☁️ Deployment
-This app can be deployed on Vercel, Netlify, Render, or Railway.
 
-Deployment checklist:
-* Push the project to a public GitHub repository.
-* Configure environment variables in the chosen platform:
-  * `NEXT_PUBLIC_SUPABASE_URL`
-  * `NEXT_PUBLIC_SUPABASE_ANON_KEY`
-  * `RESEND_API_KEY`
-  * `ORDER_EMAIL_FROM`
-* Use `npm run build` to verify production build success.
-* Deploy the `main` or `production` branch from GitHub to the platform.
+Deployed on **Vercel**. To deploy your own:
 
-If deploying to Vercel, set the project framework to `Next.js` and add the above environment values in Project Settings.
+1. Push to a public GitHub repo
+2. Import into [Vercel](https://vercel.com) → set framework to **Next.js**
+3. Add environment variables in Project Settings
+4. Deploy from `main` branch ✅
+
+> Also compatible with **Netlify**, **Render**, and **Railway**.
 
 ---
 
-## 🧪 How to Test
-1. Run the app locally: `npm run dev`
-2. Open `http://localhost:3000`
-3. Verify product browsing:
-   * Search products by name
-   * Filter by category
-   * Open a product detail page
-4. Verify product details:
-   * Image carousel works
-   * Product information and stock status display correctly
-   * Add to Cart and Buy Now actions function
-5. Verify cart behavior:
-   * Update quantity
-   * Remove items
-   * See subtotal and total update correctly
-6. Verify checkout and order placement:
-   * Fill shipping details
-   * Place an order
-   * Confirm order ID shown on confirmation page
-7. Optional email test:
-   * Configure Resend credentials
-   * Place an order and confirm the receipt email is sent
+## 🧪 Testing Checklist
 
----
-
-## 🎯 Assignment Compliance
-This submission is designed to satisfy the SDE intern fullstack assignment by implementing:
-* Product listing and search
-* Product detail page with carousel
-* Cart management with quantity updates and removal
-* Checkout flow with shipping address capture
-* Order placement and confirmation
-* Responsive layout across devices
-* Database-backed order persistence
-* Email notification on order placement
+| 🧪 Test | 🔍 What to Verify |
+|---|---|
+| 🔎 Product Search | Search by name/category — results update correctly |
+| 🗂️ Category Filter | Click a category — grid filters instantly |
+| 🖼️ Product Detail | Carousel works, stock & delivery info display |
+| 🛒 Add to Cart | Item appears in cart, quantity & total update |
+| ♻️ Cart Persistence | Refresh page — cart items remain |
+| 📦 Checkout | Fill address, place order, see Order ID |
+| 🕓 Order History | Placed order appears in `/orders` page |
+| 📧 Email (optional) | Configure Resend — receipt email delivered |
 
 ---
 
 ## 💡 Assumptions
-* Auth is available, but checkout works without requiring login.
-* Orders are stored in Supabase and can be viewed through order history.
-* Product data is seeded as sample catalog items.
-* UI is designed to resemble Amazon patterns while remaining original.
+
+- Checkout works **without login** (guest orders fully supported)
+- Missing env credentials fall back to local mock product data
+- Product catalog is seeded as sample items across multiple categories
+- UI follows Amazon's patterns while remaining original work
 
 ---
 
-## 📌 Notes
-* This app uses Next.js API routes and Supabase rather than a separate Express backend.
-* The project is intended as a fullstack prototype for the internship assignment.
-* Make sure Supabase table names and permissions are configured correctly for `Products` and `Orders`.
+## 📝 Notes
+
+- Uses **Next.js API Routes + Supabase** instead of a separate Express backend
+- Supabase RLS (Row Level Security) must allow read on `Products` and full access on `Orders`
+- AI tools (Claude, GitHub Copilot) assisted development — all code is understood and explainable
 
 ---
 
-## 📚 Ready for Evaluation
-This README includes setup instructions, the tech stack, database design, feature mapping, and deployment notes required for the assignment evaluation.
