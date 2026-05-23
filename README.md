@@ -204,7 +204,7 @@ Copy `.env.example` → `.env.local` and fill in:
 NEXT_PUBLIC_SUPABASE_URL=https://your-project-id.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key-here
 
-# 📧 Resend Email
+# 📧 Nodemailer Email
 EMAIL_USER=user_email_id
 EMAIL_PASS=user_email_password(2-factor-authentication)
 
