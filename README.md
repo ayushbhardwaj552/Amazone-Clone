@@ -205,8 +205,10 @@ NEXT_PUBLIC_SUPABASE_URL=https://your-project-id.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key-here
 
 # 📧 Resend Email
-RESEND_API_KEY=re_your_api_key_here
-ORDER_EMAIL_FROM=Amazon <orders@yourdomain.com>
+EMAIL_USER=user_email_id
+EMAIL_PASS=user_email_password(2-factor-authentication)
+
+
 ```
 
 > ⚠️ Missing credentials? No problem — the app auto-switches to local mock data so all features still work for evaluation.
